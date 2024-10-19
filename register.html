@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - Note-Taking App</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="register-container">
+    <h2>Register</h2>
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+    <button onclick="register()">Register</button>
+    <p>Already have an account? <a href="login.html">Login here</a>.</p>
+  </div>
+  <script>
+    function register() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmPassword').value;
+      let users = JSON.parse(localStorage.getItem('users')) || {};
+
+      if (!username || !password || !confirmPassword) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+      }
+
+      if (users[username]) {
+        alert('Username already exists.');
+        return;
+      }
+
+      users[username] = { password: password };
+      localStorage.setItem('users', JSON.stringify(users));
+      alert('Registration successful! You can now log in.');
+      window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>

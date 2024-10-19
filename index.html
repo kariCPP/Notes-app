@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Note-Taking App</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Include jsPDF Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Include Hammer.js Library for touch  -->
+  <script src="https://hammerjs.github.io/dist/hammer.min.js"></script>
+</head>
+<body>
+  <!-- Calendar and Theme Toggle Buttons -->
+  <button id="calendarButton" onclick="goToCalendar()">Calendar</button>
+  <button id="themeToggle" onclick="toggleTheme()">Switch Theme</button>
+
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <ul id="subjectList">
+      <!-- Subjects will be added -->
+    </ul>
+    <button onclick="openCreateNotebookModal()">New Notebook</button>
+  </nav>
+
+  <!-- Main Content Area -->
+  <div class="content">
+    <h1 id="subjectTitle">Welcome</h1>
+
+    <!-- Toolbar -->
+    <div id="toolbar" class="toolbar" style="display: none;">
+      <button onclick="setTool('pen')">Pen</button>
+      <button onclick="setTool('eraser')">Eraser</button>
+      <button onclick="setTool('line')">Line</button>
+      <button onclick="setTool('rectangle')">Rectangle</button>
+      <button onclick="setTool('circle')">Circle</button>
+      <button onclick="setTool('text')">Text</button>
+      <button onclick="setTool('highlighter')">Highlighter</button>
+      <button onclick="setTool('pan')">Pan</button>
+      <input type="color" id="colorPicker" onchange="addCustomColor(this.value)">
+      <input type="range" id="brushSize" min="1" max="20" value="5" onchange="setBrushSize(this.value)">
+      <!-- Color Palette -->
+      <div id="colorPalette" class="color-palette"></div>
+      <!-- Undo Redo Buttons -->
+      <button onclick="undo()">Undo</button>
+      <button onclick="redo()">Redo</button>
+      <!-- Export Buttons -->
+      <button onclick="exportAsImage()">Export as Image</button>
+      <button onclick="exportAsPDF()">Export as PDF</button>
+    </div>
+
+    <div id="contentArea">
+      <p>Select a notebook from the sidebar to start taking notes.</p>
+    </div>
+
+    <!-- page control -->
+    <div class="pagination" style="display: none;">
+      <button onclick="prevPage()">Previous</button>
+      <span>Page <span id="currentPage">1</span></span>
+      <button onclick="nextPage()">Next</button>
+    </div>
+
+    <!-- add page -->
+    <button class="add-page" onclick="addPage()" style="display: none;">Add New Page</button>
+  </div>
+
+  <!-- boek model -->
+  <div id="createNotebookModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeCreateNotebookModal()">&times;</span>
+      <h2>Create New Notebook</h2>
+      <label for="notebookName">Notebook Name:</label>
+      <input type="text" id="notebookName" placeholder="Enter notebook name">
+      <label for="paperType">Paper Type:</label>
+      <select id="paperType">
+        <option value="plain">Plain</option>
+        <option value="lined">Lined</option>
+        <option value="grid">Grid</option>
+      </select>
+      <button onclick="createNotebook()">Create</button>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
