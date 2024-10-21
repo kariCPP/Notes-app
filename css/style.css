@@ -1,0 +1,380 @@
+/* css/style.css */
+
+/* CSS Variables for Themes */
+:root {
+    --background-color: #0D1B2A;
+    --text-color: #E0E1DD;
+    --sidebar-color: #1B263B;
+    --accent-color: #415A77;
+    --canvas-background: #FFFFFF;
+  }
+  
+  /* General Styles */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    background-color: var(--sidebar-color);
+    width: 200px;
+    height: 100vh;
+    position: fixed;
+    overflow: auto;
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar li {
+    margin: 0;
+  }
+  
+  .sidebar a {
+    color: var(--text-color);
+    padding: 15px;
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar a:hover {
+    background-color: var(--accent-color);
+  }
+  
+  .sidebar button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+  }
+  
+  .sidebar button:hover {
+    background-color: var(--accent-color);
+  }
+  
+  /* Content Styles */
+  .content {
+    margin-left: 200px;
+    padding: 20px;
+  }
+  
+  .content h1 {
+    animation: fadeIn 0.5s;
+  }
+  
+  #contentArea {
+    min-height: 400px;
+    margin-top: 20px;
+    animation: fadeIn 0.5s;
+  }
+  
+  canvas {
+    border: 1px solid var(--text-color);
+    background-color: var(--canvas-background);
+  }
+  
+  /* Toolbar Styles */
+  .toolbar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .toolbar button {
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .toolbar button:hover {
+    background-color: var(--accent-color);
+  }
+  
+  .toolbar input[type="color"],
+  .toolbar input[type="range"] {
+    margin-right: 10px;
+  }
+  
+  /* Color Palette Styles */
+  .color-palette {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+  
+  .color-swatch {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+    border: 1px solid var(--text-color);
+  }
+  
+  /* Pagination Styles */
+  .pagination {
+    display: none; /* Hidden until subject is selected */
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 15px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .pagination button:hover {
+    background-color: var(--accent-color);
+  }
+  
+  /* Add Page Button */
+  .add-page {
+    display: none; /* Hidden until subject is selected */
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-page:hover {
+    background-color: var(--accent-color);
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(13, 27, 42, 0.9);
+  }
+  
+  .modal-content {
+    background-color: var(--sidebar-color);
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid var(--accent-color);
+    width: 80%;
+    max-width: 500px;
+    color: var(--text-color);
+  }
+  
+  .modal-content h2 {
+    margin-top: 0;
+  }
+  
+  .modal-content label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .modal-content input[type="text"],
+  .modal-content select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .modal-content button {
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 4px;
+  }
+  
+  .modal-content button:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+  }
+  
+  .close {
+    color: var(--text-color);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: var(--accent-color);
+  }
+  
+  /* Login and Registration Styles */
+  .login-container,
+  .register-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: var(--sidebar-color);
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .login-container h2,
+  .register-container h2 {
+    text-align: center;
+  }
+  
+  .login-container input,
+  .register-container input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .login-container button,
+  .register-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--accent-color);
+    color: var(--text-color);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .login-container button:hover,
+  .register-container button:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+  }
+  
+  /* CalendarStyles */
+  .back-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .back-button:hover {
+    background-color: var(--accent-color);
+  }
+  
+  .calendar-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 50px;
+  }
+  
+  .calendar-day {
+    width: 200px;
+    margin: 10px;
+    background-color: var(--sidebar-color);
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .calendar-day h2 {
+    text-align: center;
+  }
+  
+  .calendar-day textarea {
+    width: 100%;
+    height: 150px;
+    background-color: var(--text-color);
+    color: var(--background-color);
+    border: none;
+    padding: 5px;
+    border-radius: 3px;
+    resize: none;
+  }
+  
+  /* Calendar Button */
+  #calendarButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  #calendarButton:hover {
+    background-color: var(--accent-color);
+  }
+  
+  /* Theme Toggle Button */
+  #themeToggle {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  #themeToggle:hover {
+    background-color: var(--accent-color);
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .content {
+      margin-left: 0;
+    }
+    .modal-content {
+      width: 95%;
+      margin: 20% auto;
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
